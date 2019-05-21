@@ -144,7 +144,7 @@ class Event extends EventAbstract
     public function setRevenue($revenue)
     {
         return $this->set('revenue', $revenue)
-            ->addToEventProperties('revenue', $revenue);
+            ->setEventProperty('revenue', $revenue);
     }
 
     /**
