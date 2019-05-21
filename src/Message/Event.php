@@ -97,7 +97,7 @@ class Event extends EventAbstract
 
     public function __construct($type)
     {
-        $this->set('event_type', $type);
+        $this->eventType = $type;
     }
 
     /**
