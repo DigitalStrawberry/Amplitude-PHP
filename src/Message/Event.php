@@ -71,6 +71,12 @@ class Event extends EventAbstract
     /** @var float */
     protected $revenue;
 
+    /** @var float */
+    protected $price;
+
+    /** @var int */
+    protected $quantity;
+
     /** @var string */
     protected $productId;
 
@@ -145,10 +151,11 @@ class Event extends EventAbstract
      * @param string $productId
      * @return $this
      */
-    public function setRevenue($revenue, $productId = null)
+    public function setRevenue($productId, $price, $quantity = 1)
     {
-        $this->revenue = $revenue;
         $this->productId = $productId;
+        $this->price = $price;
+        $this->quantity = $quantity;
     }
 
     /**
