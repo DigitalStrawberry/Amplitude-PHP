@@ -30,7 +30,7 @@ Logging Revenue
 You can set an event as a revenue event by calling the `setRevenue` method.
 
 ```php
-$event->setRevenue(100.00);
+$event->setRevenue(100.00, 'Remove Ads');
 ```
 
 User Properties

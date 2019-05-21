@@ -71,6 +71,9 @@ class Event extends EventAbstract
     /** @var float */
     protected $revenue;
 
+    /** @var string */
+    protected $productId;
+
     /** @var float */
     protected $locationLat;
 
@@ -137,14 +140,15 @@ class Event extends EventAbstract
     }
 
     /**
-     * Set revenue to the main object and event properties
+     * Sets the revenue for the event
      * @param float $revenue
+     * @param string $productId
      * @return $this
      */
-    public function setRevenue($revenue)
+    public function setRevenue($revenue, $productId = null)
     {
-        return $this->set('revenue', $revenue)
-            ->setEventProperty('revenue', $revenue);
+        $this->revenue = $revenue;
+        $this->productId = $productId;
     }
 
     /**
@@ -179,6 +183,7 @@ class Event extends EventAbstract
                 'dma' => $this->getDma(),
                 'language' => $this->getLanguage(),
                 'revenue' => $this->getRevenue(),
+                'productId' => $this->getProductId(),
                 'location_lat' => $this->getLocationLat(),
                 'location_lng' => $this->getLocationLng(),
                 'ip' => $this->getIp(),
