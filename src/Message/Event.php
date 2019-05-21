@@ -8,10 +8,10 @@ class Event extends EventAbstract
 {
     const ERROR_DEVICE_ID = 'error-device-id';
 
-    /** @var int */
+    /** @var string */
     protected $userId;
 
-    /** @var int */
+    /** @var string */
     protected $deviceId;
 
     /** @var string */
@@ -95,6 +95,11 @@ class Event extends EventAbstract
     /** @var integer */
     protected $sessionId;
 
+    public function __construct($type)
+    {
+        $this->set('event_type', $type);
+    }
+
     /**
      * @param string $name
      * @param string $value
@@ -106,6 +111,29 @@ class Event extends EventAbstract
             $this->{$name} = $value;
         }
         return $this;
+    }
+
+
+    /**
+     * Set the device_id of the user
+     *
+     * @param mixed $value
+     * @return void
+     */
+    public function setDeviceId($value)
+    {
+        $this->deviceId = $value;
+    }
+
+    /**
+     * Set the user_id of the user
+     *
+     * @param mixed $value
+     * @return void
+     */
+    public function setUserId($value)
+    {
+        $this->userId = $value;
     }
 
     /**
@@ -162,14 +190,17 @@ class Event extends EventAbstract
     }
 
     /**
-     * @param string $name
-     * @param mixed $value
-     * @return $this
+     * Sets multiple event properties.
+     *
+     * @param array $properties
+     * @return void
      */
-    public function addToEventProperties($name, $value)
+    public function setEventProperties($properties)
     {
-        $this->eventProperties[$name] = $value;
-        return $this;
+        foreach($properties as $key => $value)
+        {
+            $this->setEventProperty($key, $value);
+        }
     }
 
     /**
@@ -177,7 +208,33 @@ class Event extends EventAbstract
      * @param mixed $value
      * @return $this
      */
-    public function addToUserProperties($name, $value)
+    public function setEventProperty($name, $value)
+    {
+        $this->eventProperties[$name] = $value;
+        return $this;
+    }
+
+    /**
+     * Sets multiple user properties.
+     *
+     * @param array $properties
+     * @return void
+     */
+    public function setUserProperties($properties)
+    {
+        foreach($properties as $key => $value)
+        {
+            $this->setUserProperty($key, $value);
+        }
+
+    }
+
+    /**
+     * @param string $name
+     * @param mixed $value
+     * @return $this
+     */
+    public function setUserProperty($name, $value)
     {
         $this->userProperties[$name] = $value;
         return $this;
