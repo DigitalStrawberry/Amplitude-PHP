@@ -191,6 +191,8 @@ class Event extends EventAbstract
                 'language' => $this->getLanguage(),
                 'revenue' => $this->getRevenue(),
                 'productId' => $this->getProductId(),
+                'quantity' => $this->getQuantity(),
+                'price' => $this->getPrice(),
                 'location_lat' => $this->getLocationLat(),
                 'location_lng' => $this->getLocationLng(),
                 'ip' => $this->getIp(),
