@@ -49,7 +49,7 @@ $event->setUserProperty('city_id', 123);
 ```
 
 
-Logging Events
+Submitting Events to Amplitude
 ----
 
 ```php
@@ -64,4 +64,9 @@ catch(Exception $e)
 {
 
 }
+```
+If you are queuing the events on your server to later submit in batches, you can generate an insert id for the event. This will prevent Amplitude from recording the event multiple times.
+
+```php
+$event->generateInsertId();
 ```

@@ -231,7 +231,11 @@ class Event extends EventAbstract
         {
             $this->setUserProperty($key, $value);
         }
+    }
 
+    public function generateInsertId()
+    {
+        return $this->getInsertId();
     }
 
     /**
